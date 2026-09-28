@@ -19,8 +19,9 @@ Rolling index of session state. Keep this lean — a pointer to topic notes in
 - **Next, per Eli 2026-09-28: clinics task B, the sparse install template
   repo** at `~/litellm-gateway-template` (`nmfs-opensci/litellm-gateway-template`;
   the name differs from the `litellm-bedrock-gateway` the plan used). It holds
-  only an initial commit (LICENSE, README) and has no `claude/` directory. The
-  task description is in `agent-coders-clinics` `claude/notes/gateway-skill-tasks.md`;
+  only an initial commit plus its own `claude/handoff.md`, which records Eli's
+  direction: the template uses the skill (README + `AGENTS.md`, `CLAUDE.md`
+  symlink, how to get the skill, what to prompt). The original plan is in `agent-coders-clinics` `claude/notes/gateway-skill-tasks.md`;
   what the skill now ships (organizer keys, named workshops, `docs/`/`hub/`
   committed, `secrets/` ignored) is in
   [notes/litellm-bedrock-gateway-skill.md](notes/litellm-bedrock-gateway-skill.md).
