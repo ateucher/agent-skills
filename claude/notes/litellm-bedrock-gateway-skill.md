@@ -84,7 +84,7 @@ instructions. Eli's decisions:
 Verified in `gwskill-test-delete-me` (Greenfield) and torn down; details in the
 skill's `references/verify.md`.
 
-## Organizer keys and named workshops (issue #27, 2026-09-28)
+## Organizer keys and named workshops (issue #27 → PR #28, merged 2026-09-28)
 
 Order agreed with Eli: A (#25) → #27 → B (template repo) → C (colleague's
 instructions). #27 had to come before C, because C tells the installer what to
@@ -142,3 +142,13 @@ hub node's instance role still answers through instance metadata. Also set
 AWS_SHARED_CREDENTIALS_FILE=/nonexistent`, and confirm `aws sts
 get-caller-identity` fails. A foreground `sleep` is blocked in this harness;
 wait with an `until` loop on a real condition.
+
+## Next: task B, the install template repo
+
+Eli, 2026-09-28: next is editing `~/litellm-gateway-template`
+(`nmfs-opensci/litellm-gateway-template`, initial commit only). The plan in the
+clinics repo calls it `nmfs-opensci/litellm-bedrock-gateway`; the real name is
+`litellm-gateway-template`. It should be the sparse per-install repo an
+installer copies: `gateway.env`, `models.yaml`, `.gitignore`, and committed
+`docs/` and `hub/` after rendering, with scripts from the skill's
+`init_deployment.sh`, and no URL or secret in any committed file. Not started.

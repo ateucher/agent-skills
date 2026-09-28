@@ -6,24 +6,25 @@ Rolling index of session state. Keep this lean — a pointer to topic notes in
 ## Repo state
 
 - Repo: `nmfs-opensci/agent-skills`, working on `/home/jovyan/agent-skills`.
-- Branch: `main` clean. **Open: PR #28** (issue #27, branch
-  `issue-27-organizer-key`), waiting for Eli to test and say merge. Merged
+- Branch: `main` clean. **No open PRs.** Merged
   so far: #6 (the skill, issue #4) and #8 (README) on 2026-09-03, #10
   (browser-access) on 2026-09-04, #13 (OA lessons, issue #12) and #15 (repo
   rename, issue #14) on 2026-09-18; #19 (a scratch-prefix test always gets a viewer
   and a short README, issue #18) on 2026-09-19, opened from the HYCOM session in a
   separate worktree; #24 (new `litellm-bedrock-gateway` skill, issue #22) on
   2026-09-25; #26 (gateway workshop sign-up, organizer without AWS, per-install
-  docs, issue #25) on 2026-09-28. All squash-merged, branches deleted, issues
+  docs, issue #25) and #28 (organizer keys, named workshops, issue #27) on
+  2026-09-28. All squash-merged, branches deleted, issues
   auto-closed.
-- **PR #28 (issue #27)**: organizers without AWS get their own revocable
-  `proxy_admin` key (`keys.py organizer create|list|revoke`), never the master
-  key or UI password; the key service holds several named workshops at once
-  (`ws-<workshop>-<user>`). Tested end to end in a throwaway Greenfield stack,
-  torn down. Decisions and the odd-looking parts (gzipped key service in SSM):
+- **Next, per Eli 2026-09-28: clinics task B, the sparse install template
+  repo** at `~/litellm-gateway-template` (`nmfs-opensci/litellm-gateway-template`;
+  the name differs from the `litellm-bedrock-gateway` the plan used). It holds
+  only an initial commit (LICENSE, README) and has no `claude/` directory. The
+  task description is in `agent-coders-clinics` `claude/notes/gateway-skill-tasks.md`;
+  what the skill now ships (organizer keys, named workshops, `docs/`/`hub/`
+  committed, `secrets/` ignored) is in
   [notes/litellm-bedrock-gateway-skill.md](notes/litellm-bedrock-gateway-skill.md).
-  Next in that line, after #28 merges: clinics tasks B (template repo) and C
-  (colleague's instructions).
+  After B comes C, the colleague's org-install instructions.
 - **Lessons from the HYCOM build are waiting for a Learn pass**, including two places
   where the skill is wrong (`to_icechunk(encoding=...)` does not exist in VirtualiZarr
   2.7.3; `chunks={}` breaks down at millions of chunks):
@@ -106,6 +107,11 @@ build's lessons get written down first. Harvesting them into the skill is a
 deliberate step that has happened once (PR #13) and will need doing again.
 
 ## Recent work
+
+- **2026-09-28 — organizer keys and named workshops** (issue #27 → PR #28). An
+  organizer without AWS gets a revocable `proxy_admin` key, never the master key
+  or UI password; several workshops can run at once. Tested end to end in a
+  throwaway stack, torn down. Decisions in the gateway note.
 
 - **2026-09-28 — gateway skill: workshop sign-up, organizer without AWS, per-install
   docs** (issue #25 → PR #26). Task A from the clinics repo. Tested end to end in
