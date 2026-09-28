@@ -6,13 +6,25 @@ Rolling index of session state. Keep this lean — a pointer to topic notes in
 ## Repo state
 
 - Repo: `nmfs-opensci/agent-skills`, working on `/home/jovyan/agent-skills`.
-- Branch: `main`, clean, up to date with `origin/main`. **No open PRs.** Merged
+- Branch: `main` clean; **`issue-27-organizer-key` exists** (empty, pushed) for
+  the next task. **No open PRs.** Merged
   so far: #6 (the skill, issue #4) and #8 (README) on 2026-09-03, #10
   (browser-access) on 2026-09-04, #13 (OA lessons, issue #12) and #15 (repo
   rename, issue #14) on 2026-09-18; #19 (a scratch-prefix test always gets a viewer
   and a short README, issue #18) on 2026-09-19, opened from the HYCOM session in a
   separate worktree; #24 (new `litellm-bedrock-gateway` skill, issue #22) on
-  2026-09-25. All squash-merged, branches deleted, issues auto-closed.
+  2026-09-25; #26 (gateway workshop sign-up, organizer without AWS, per-install
+  docs, issue #25) on 2026-09-28. All squash-merged, branches deleted, issues
+  auto-closed.
+- **Next, decided with Eli 2026-09-28: issue #27**, give an organizer without AWS
+  their own revocable `proxy_admin` LiteLLM key instead of the gateway's master
+  key. Branch `issue-27-organizer-key`. **Eli has approved spinning up a
+  throwaway test stack for #27 and tearing it down when done** (Greenfield,
+  distinct `GATEWAY_STACK`, never `litellm-smoke`). The first unknown to settle
+  by running: can a `proxy_admin` key manage keys on open-source LiteLLM
+  1.102.1? Plan and order (#27 comes before the clinics repo's tasks B and C,
+  because C would otherwise hand the master key over):
+  [notes/litellm-bedrock-gateway-skill.md](notes/litellm-bedrock-gateway-skill.md).
 - **Lessons from the HYCOM build are waiting for a Learn pass**, including two places
   where the skill is wrong (`to_icechunk(encoding=...)` does not exist in VirtualiZarr
   2.7.3; `chunks={}` breaks down at millions of chunks):
@@ -95,6 +107,10 @@ build's lessons get written down first. Harvesting them into the skill is a
 deliberate step that has happened once (PR #13) and will need doing again.
 
 ## Recent work
+
+- **2026-09-28 — gateway skill: workshop sign-up, organizer without AWS, per-install
+  docs** (issue #25 → PR #26). Task A from the clinics repo. Tested end to end in
+  `gwskill-test-delete-me`, torn down. Decisions in the gateway note.
 
 - **2026-09-25 — added the `litellm-bedrock-gateway` skill** (issue #22 → PR #24).
   A self-contained copy of the clinics gateway, now its source of truth, with one

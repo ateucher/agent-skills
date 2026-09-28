@@ -83,3 +83,29 @@ instructions. Eli's decisions:
 
 Verified in `gwskill-test-delete-me` (Greenfield) and torn down; details in the
 skill's `references/verify.md`.
+
+## Next: issue #27, and the order of the remaining gateway work
+
+Decided with Eli 2026-09-28: **A (#25, done) → #27 → B (template repo) → C
+(colleague's instructions)**. #27 goes before C because C tells the installer
+what to send the organizer: with #27 that is an organizer key, which can be
+revoked; without it, the master key, which cannot be taken back. B does not
+depend on #27.
+
+#27 in short (the issue has the list): the installer makes the organizer a
+LiteLLM key with the `proxy_admin` role; `keys.py`/`workshop.py` read it from
+`secrets/organizer-key`; the key service's `/workshop/admin` accepts admin-role
+keys, not only the master key. The first thing to find out, by running, is
+whether a `proxy_admin` key can list, create, update, block and delete keys on
+open-source LiteLLM 1.102.1. If it cannot, fall back to a master-key rotate
+command (move container start out of user data into a script on the instance
+so env files can be rewritten and containers recreated; Docker reads
+`--env-file` only at container creation).
+
+Test stack pattern that worked on 2026-09-28: `init_deployment.sh` into the
+scratchpad, a fresh venv (a moved venv breaks), `AWS_PROFILE=greenfield`,
+`GATEWAY_STACK=gwskill-test-delete-me`, a distinct `GATEWAY_HUB_COMMAND`. The key
+service answers before LiteLLM on first boot, so `instance.sh health` can fail
+once with curl exit 52; retry. A fake hub participant is
+`env -i HOME=<empty dir> PATH=~/.local/bin:/usr/bin:/bin JUPYTERHUB_USER=<name>
+bash <shared>/<command>`, with the code on stdin.
