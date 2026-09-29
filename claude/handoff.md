@@ -35,7 +35,10 @@ Rolling index of session state. Keep this lean — a pointer to topic notes in
   renamed issuer keys (old names still work). Sign-up kept. Tested end to end
   on a throwaway Greenfield stack, torn down. Decisions and why:
   [notes/litellm-bedrock-gateway-skill.md](notes/litellm-bedrock-gateway-skill.md)
-  Eli's real install (still pending) now gets this version.
+  Eli's real install (still pending) now gets this version. The existing
+  install `nmfs-opensci/agent-coders-gateway` (`~/agent-coders-gateway`,
+  deployed before #34) has its update plan in agent-coders-gateway#3: local
+  files only, no redeploy; decisions there are Eli's.
 - **Lessons from the HYCOM build are waiting for a Learn pass**, including two places
   where the skill is wrong (`to_icechunk(encoding=...)` does not exist in VirtualiZarr
   2.7.3; `chunks={}` breaks down at millions of chunks):
