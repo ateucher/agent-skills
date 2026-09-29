@@ -22,8 +22,12 @@ Rolling index of session state. Keep this lean — a pointer to topic notes in
   repo, because template copies would inherit a `claude/` directory:
   [notes/litellm-gateway-template.md](notes/litellm-gateway-template.md).
   #29 is done (PR #32). **Eli is about to try the template for a real
-  install** (2026-09-29); the skill is linked on this hub for that. After B
-  comes C, the colleague's org-install instructions.
+  install** (2026-09-29); the skill is linked on this hub for that. **C,
+  the colleague's org-install instructions, is done** as the trimmed
+  agent-coders-clinics PR #11 (open, awaiting Eli): template + skill, the
+  install's answers, and a revocable organizer key for Eli. Next after
+  2026-09-30: clean up `~/agent-coders-clinics` (tracked in that repo's
+  handoff).
 - **Lessons from the HYCOM build are waiting for a Learn pass**, including two places
   where the skill is wrong (`to_icechunk(encoding=...)` does not exist in VirtualiZarr
   2.7.3; `chunks={}` breaks down at millions of chunks):
