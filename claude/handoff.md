@@ -16,15 +16,11 @@ Rolling index of session state. Keep this lean — a pointer to topic notes in
   docs, issue #25) and #28 (organizer keys, named workshops, issue #27) on
   2026-09-28. All squash-merged, branches deleted, issues
   auto-closed.
-- **Next, per Eli 2026-09-28: clinics task B, the sparse install template
-  repo** at `~/litellm-gateway-template` (`nmfs-opensci/litellm-gateway-template`;
-  the name differs from the `litellm-bedrock-gateway` the plan used). It holds
-  only an initial commit plus its own `claude/handoff.md`, which records Eli's
-  direction: the template uses the skill (README + `AGENTS.md`, `CLAUDE.md`
-  symlink, how to get the skill, what to prompt). The original plan is in `agent-coders-clinics` `claude/notes/gateway-skill-tasks.md`;
-  what the skill now ships (organizer keys, named workshops, `docs/`/`hub/`
-  committed, `secrets/` ignored) is in
-  [notes/litellm-bedrock-gateway-skill.md](notes/litellm-bedrock-gateway-skill.md).
+- **Clinics task B, the install template** `nmfs-opensci/litellm-gateway-template`
+  (`~/litellm-gateway-template`): built. Its notes live **here**, not in that
+  repo, because template copies would inherit a `claude/` directory:
+  [notes/litellm-gateway-template.md](notes/litellm-gateway-template.md).
+  **Open: #29**, split the skill's gateway questions from per-workshop ones.
   After B comes C, the colleague's org-install instructions.
 - **Lessons from the HYCOM build are waiting for a Learn pass**, including two places
   where the skill is wrong (`to_icechunk(encoding=...)` does not exist in VirtualiZarr
@@ -189,6 +185,9 @@ Not a task list — context for whatever comes up. Ask before acting on any of i
 - [litellm-bedrock-gateway-skill.md](notes/litellm-bedrock-gateway-skill.md) —
   Eli's decisions for the gateway skill, why config lives in SSM, the `user_id`
   finding, what is untested
+- [litellm-gateway-template.md](notes/litellm-gateway-template.md) — the
+  install template repo: Eli's direction, why it has no `claude/` or
+  `.gitignore`, what is tested
 - [append-alignment-issue-21.md](notes/append-alignment-issue-21.md) — #21 decisions,
   the verified repro, and why VirtualiZarr's append misplaces data
 - [virtual-icechunk-skill.md](notes/virtual-icechunk-skill.md) — why the skill
