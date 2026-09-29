@@ -143,12 +143,43 @@ AWS_SHARED_CREDENTIALS_FILE=/nonexistent`, and confirm `aws sts
 get-caller-identity` fails. A foreground `sleep` is blocked in this harness;
 wait with an `until` loop on a real condition.
 
-## Next: task B, the install template repo
+## Gateway setup vs. adding a workshop (issue #29 → PR #32, merged 2026-09-29)
+
+One gateway serves many workshops, so the skill now sets up the gateway once
+(steps 1–8) and adds workshops as a repeatable step 9
+(`references/add-a-workshop.md`). Eli's decisions:
+
+- **Per-workshop values are not in `gateway.env`.** `GATEWAY_WORKSHOP_BUDGET`,
+  `_DAYS`, `_MAX` are gone; `workshop.py open` requires `--budget`, `--days`,
+  `--max`, so no gateway-wide default can silently apply to the wrong workshop.
+- **`GATEWAY_ORGANIZER` is gone.** One hub script serves every workshop, so the
+  rendered docs and hub script say "your workshop organizer".
+- **Hub settings (`GATEWAY_HUB_*`) are asked at gateway setup**, "so the
+  installer is not tempted to use a workshop-specific name"; the skill suggests
+  a generic command name (`claude-workshop`).
+- **Adding a workshop**: ask its questions (with a rough cost sense), make an
+  organizer key if they have no AWS, check the hub script and `.url` are
+  current, write a record, and **do not open sign-up** (a code opened early can
+  leak; the organizer opens it in the room).
+- **The record** `docs/workshops/<name>.md` is written by `workshop.py plan`
+  (not by hand) so the name is validated and the `open` command in it has the
+  right flags. No code, key or URL; committed; it is how the organizer gets
+  the settings.
+
+Tested in a scratch deployment with a clean venv: render, `plan`, name and
+flag checks. **Not tested**: `open`/`status` on a live gateway (request body
+unchanged), or the step driven by an agent. Old deployment folders keep their
+copied scripts; their `GATEWAY_WORKSHOP_*`/`GATEWAY_ORGANIZER` lines are
+ignored by the new ones.
+
+## Task B, the install template repo (built; see litellm-gateway-template.md)
 
 Eli, 2026-09-28: next is editing `~/litellm-gateway-template`
-(`nmfs-opensci/litellm-gateway-template`, initial commit only). The plan in the
+(`nmfs-opensci/litellm-gateway-template`). Since built; current state in
+[litellm-gateway-template.md](litellm-gateway-template.md). The paragraph below
+is the original plan. The plan in the
 clinics repo calls it `nmfs-opensci/litellm-bedrock-gateway`; the real name is
 `litellm-gateway-template`. It should be the sparse per-install repo an
 installer copies: `gateway.env`, `models.yaml`, `.gitignore`, and committed
 `docs/` and `hub/` after rendering, with scripts from the skill's
-`init_deployment.sh`, and no URL or secret in any committed file. Not started.
+`init_deployment.sh`, and no URL or secret in any committed file.

@@ -14,14 +14,16 @@ Rolling index of session state. Keep this lean — a pointer to topic notes in
   separate worktree; #24 (new `litellm-bedrock-gateway` skill, issue #22) on
   2026-09-25; #26 (gateway workshop sign-up, organizer without AWS, per-install
   docs, issue #25) and #28 (organizer keys, named workshops, issue #27) on
-  2026-09-28. All squash-merged, branches deleted, issues
-  auto-closed.
+  2026-09-28; #31 (`CLAUDE.md` symlink to `AGENTS.md`, issue #30) and #32
+  (gateway setup split from adding a workshop, issue #29) on 2026-09-29. All
+  squash-merged, branches deleted, issues auto-closed.
 - **Clinics task B, the install template** `nmfs-opensci/litellm-gateway-template`
   (`~/litellm-gateway-template`): built. Its notes live **here**, not in that
   repo, because template copies would inherit a `claude/` directory:
   [notes/litellm-gateway-template.md](notes/litellm-gateway-template.md).
-  **Open: #29**, split the skill's gateway questions from per-workshop ones.
-  After B comes C, the colleague's org-install instructions.
+  #29 is done (PR #32). **Eli is about to try the template for a real
+  install** (2026-09-29); the skill is linked on this hub for that. After B
+  comes C, the colleague's org-install instructions.
 - **Lessons from the HYCOM build are waiting for a Learn pass**, including two places
   where the skill is wrong (`to_icechunk(encoding=...)` does not exist in VirtualiZarr
   2.7.3; `chunks={}` breaks down at millions of chunks):
@@ -104,6 +106,14 @@ build's lessons get written down first. Harvesting them into the skill is a
 deliberate step that has happened once (PR #13) and will need doing again.
 
 ## Recent work
+
+- **2026-09-29 — gateway setup split from adding a workshop** (issue #29 → PR
+  #32). Step 1 asks only gateway questions; new step 9 adds a workshop and
+  records it with `workshop.py plan` in `docs/workshops/<name>.md`. Per-workshop
+  settings left `gateway.env`. Not tested against a live gateway. Decisions in
+  the gateway note. Also `CLAUDE.md` → `AGENTS.md` symlink (#30 → #31), and the
+  gateway skill linked as a personal skill on this hub the same way as
+  `virtual-icechunk` (via `~/.agents/skills`).
 
 - **2026-09-28 — organizer keys and named workshops** (issue #27 → PR #28). An
   organizer without AWS gets a revocable `proxy_admin` key, never the master key

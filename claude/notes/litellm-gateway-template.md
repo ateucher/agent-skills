@@ -25,8 +25,8 @@ install in an org AWS account, comes next.
   prompts that fit, then follow the skill.
 - **An installer sets up one gateway, then adds workshops.** Workshops are
   named, each with its own organizer (e.g. "Set up a workshop named orca with
-  organizer jane-blow"). The skill's step 1 still mixes gateway and workshop
-  questions: agent-skills#29.
+  organizer jane-blow"). The skill now matches: step 1 asks only gateway
+  questions and step 9 adds a workshop (agent-skills#29, PR #32).
 - **Claude Code greets on startup** through a project `SessionStart` hook
   (`.claude/settings.json` → `.claude/hooks/greeting.sh`, a `systemMessage`
   that depends on whether `gateway.env` exists), because agents say nothing
@@ -58,6 +58,12 @@ install in an org AWS account, comes next.
   driven by `AGENTS.md`.
 
 ## Open
+
+- **Eli is trying the template for a real install** (from 2026-09-29), with
+  the skill linked on this hub (`~/.claude/skills/litellm-bedrock-gateway` →
+  `~/.agents/skills/…` → `~/agent-skills/skills/litellm-bedrock-gateway`, so
+  it follows whatever branch this checkout is on). Findings from that run
+  belong in this note and may become skill issues.
 
 - An install repo keeps the template README; whether the agent should rewrite
   it for that install is undecided.
