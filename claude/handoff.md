@@ -6,7 +6,9 @@ Rolling index of session state. Keep this lean — a pointer to topic notes in
 ## Repo state
 
 - Repo: `nmfs-opensci/agent-skills`, working on `/home/jovyan/agent-skills`.
-- Branch: `main` clean. **No open PRs.** Merged
+- Branch: `main` clean. **Open, awaiting Eli: PR #34** (issue #33, key
+  batches, branch `issue-33-key-batches`) and its companion
+  `nmfs-opensci/litellm-gateway-template#4` (wording; merge after #34). Merged
   so far: #6 (the skill, issue #4) and #8 (README) on 2026-09-03, #10
   (browser-access) on 2026-09-04, #13 (OA lessons, issue #12) and #15 (repo
   rename, issue #14) on 2026-09-18; #19 (a scratch-prefix test always gets a viewer
@@ -28,6 +30,14 @@ Rolling index of session state. Keep this lean — a pointer to topic notes in
   install's answers, and a revocable organizer key for Eli. Next after
   2026-09-30: clean up `~/agent-coders-clinics` (tracked in that repo's
   handoff).
+- **Issue #33 / PR #34, key batches (2026-09-29)**: three roles (installer,
+  key issuer, organizer with only a hub account); `keys.py batch`; the hub
+  script takes a code or a pasted key and has `--status FILE`; organizer keys
+  renamed issuer keys (old names still work). Sign-up kept. Tested end to end
+  on a throwaway Greenfield stack, torn down. Decisions and why:
+  [notes/litellm-bedrock-gateway-skill.md](notes/litellm-bedrock-gateway-skill.md)
+  (on the PR branch until it merges). Eli's real install is still pending;
+  the PR should land first, or the install would have to be re-rendered.
 - **Lessons from the HYCOM build are waiting for a Learn pass**, including two places
   where the skill is wrong (`to_icechunk(encoding=...)` does not exist in VirtualiZarr
   2.7.3; `chunks={}` breaks down at millions of chunks):
