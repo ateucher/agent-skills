@@ -133,6 +133,12 @@ Security choices and the reasons behind them: `references/security.md`.
   Region.
 - **Ask before creating anything billed**, and before deleting anything.
   Teardown destroys every key and all spend history.
+- **Touch nothing but the gateway, especially in a shared account.** The
+  account often runs other infrastructure (a JupyterHub, a cluster). Set
+  `GATEWAY_ACCOUNT` in `gateway.env`, change AWS only through the bundled
+  scripts (they refuse another account or a stack that is not a gateway),
+  never delete by wildcard, prefix or tag search, and on a hub touch only
+  this gateway's script and `.url` file. See `references/security.md`.
 - **Never test against a gateway people are using.** Deploy a separately named
   stack (its own `GATEWAY_STACK`) and tear it down afterwards.
 
