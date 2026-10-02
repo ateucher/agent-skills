@@ -12,11 +12,13 @@ CloudFormation stack builds it: a single EC2 instance running LiteLLM, Postgres
 and Caddy (HTTPS) in Docker. It costs about $0.57 a day running and about $5 a
 month stopped, and one command removes it.
 
-**Status: Experimental.** One deployment has been built and tested with this
-template, in an AWS "new experience" account turned into an Organization
-(September 2026). The ordinary case, a classic or organization account where
-the installer has an IAM role or IAM Identity Center access, has not been
-installed yet: treat those steps as **Provisional** and tell the user so. Costs
+**Status: Experimental.** Two deployments have been built and tested with this
+template: one in an AWS "new experience" account turned into an Organization
+(September 2026, us-east-2), and one in a classic standalone account, not in
+an Organization, signed in with `aws login` as an IAM user (October 2026,
+us-west-2). An account inside an Organization where the installer has an IAM
+role or IAM Identity Center access has not been installed yet: treat those
+steps as **Provisional** and tell the user so. Costs
 and the large-workshop runbook are Provisional too; they come from a few hours
 of use, not from a real workshop. Model IDs, prices and versions change: check
 `references/version-matrix.md` and verify in the account rather than trusting
